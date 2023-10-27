@@ -9,7 +9,8 @@
   --blanco: #fff;
   --rojo: #e92a2a;
 
-  --font: courier New;
+  --font: 'Bebas Neue', sans-serif;;
+  
 }
 
 /* Reset */
@@ -52,6 +53,17 @@ header {
   font-family: var(--font);
   font-size: 36px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.bi-cart {
+  color:var(--btnColor);
+  font-size:x-large;
+}
+
+.bi-cart-fill{
+  color:var(--btnColor);
+  font-size:x-large;
+
 }
 
 .shopTitle:hover {

@@ -1,15 +1,16 @@
 let listadoProducto = document.querySelector("#listaProductos");
-
+let carrito = {};
 let id;
 let arrayproductos = [];
+const logoCarrito = document.getElementById("logoCarrito");
 
 fetch("https://fakestoreapi.com/products")
   .then((res) => res.json())
   .then((datos) => {
     arrayproductos = datos.slice(0, 9);
-    console.log(arrayproductos);
 
     dibujartarjetas(arrayproductos);
+    revisarCarrito();
   });
 
 function dibujartarjetas(arrayproductos) {
@@ -40,3 +41,22 @@ function dibujartarjetas(arrayproductos) {
     });
   });
 }
+
+function revisarCarrito() {
+  if (localStorage.getItem("carrito")) {
+    carrito = JSON.parse(localStorage.getItem("carrito"));
+
+    cantidadCarrito = Object.keys(carrito).length;
+    if (cantidadCarrito > 0) {
+      logoCarrito.className = "bi bi-cart-fill";
+    } else {
+      logoCarrito.className = "bi bi-cart";
+    }
+
+    console.log(carrito);
+  }
+}
+
+logoCarrito.addEventListener("click", () => {
+  window.location.href = "cart.html";
+});
